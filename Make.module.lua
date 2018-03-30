@@ -9,8 +9,9 @@ return function(InstanceType)
 		if Parent then
 			Table.Parent = nil
 		end
-	
-		for Property, Value in next, Table do
+		
+		for Property = 1, #Table do
+			local Value = Table[Property]
 			if type(Property) == "number" then
 				Value.Parent = Object
 			else
@@ -25,8 +26,10 @@ return function(InstanceType)
 		if ... then
 			local Objects = {...}
 			for a = 1, #Objects do
+				local aValue = Objects[a]
 				local Object = Object:Clone()
-				for Property, Value in next, Objects[a] do
+				for Property = 1, #aValue do
+					local Value = aValue[Property]
 					if type(Property) == "number" then
 						Value.Parent = Object
 					else
